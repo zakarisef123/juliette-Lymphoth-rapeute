@@ -60,11 +60,11 @@
         .hero-text {
             max-width: 480px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 30px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .hero-photo {
@@ -199,6 +199,21 @@
             justify-content: center;
         }
 
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            color: var(--primary-dark);
+        }
+
+        .nav-toggle svg {
+            width: 26px;
+            height: 26px;
+            display: block;
+        }
+
         nav a {
             margin: 0 16px;
             text-decoration: none;
@@ -288,7 +303,8 @@
             display: grid;
             grid-template-columns: 1.1fr 0.9fr 0.9fr;
             gap: 12px;
-            height: 460px;
+            height: 380px;
+            align-self: start;
         }
 
         .mosaic-tall {
@@ -335,7 +351,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
-            margin-top: 24px;
+            margin-top: auto;
+            padding-top: 24px;
         }
 
         .about-mosaic img {
@@ -611,10 +628,29 @@
             color: rgba(255,255,255,0.9);
         }
 
+        .contact-address {
+            margin-top: 24px;
+            font-size: 1.15em;
+        }
+
+        .contact-address strong {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.65em;
+            opacity: 0.85;
+            margin-bottom: 6px;
+        }
+
+        .contact-address a {
+            color: white;
+            text-decoration: none;
+        }
+
         .contact-info {
-            margin-top: 30px;
+            margin-top: 24px;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
@@ -637,6 +673,7 @@
             color: white;
             text-decoration: none;
             font-size: 1.05em;
+            white-space: nowrap;
         }
 
         .social-link {
@@ -820,12 +857,42 @@
             }
 
             body {
-                padding-top: 180px;
+                padding-top: 64px;
+            }
+
+            nav {
+                position: fixed;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: center;
+                background: #fff;
+                padding: 10px 0 20px;
+                box-shadow: 0 10px 20px rgba(58, 43, 30, 0.12);
+            }
+
+            .nav-links.open {
+                display: flex;
             }
 
             nav a {
-                margin: 0 10px 8px;
-                font-size: 0.88em;
+                margin: 0;
+                padding: 12px 20px;
+                font-size: 1em;
+                width: 100%;
+                text-align: center;
             }
 
             section {
@@ -912,13 +979,13 @@
         <div class="hero-inner">
             <div class="hero-text">
                 <h1>Juliette Paccani</h1>
-                <p class="subtitle">Lymphothérapeute diplômée de Vodder</p>
                 <p class="intro">
                     Je vous propose une approche thérapeutique douce destinée à soutenir le fonctionnement du système lymphatique,
                     favoriser la résorption des œdèmes, améliorer la circulation de la lymphe et accompagner de
                     nombreuses situations médicales ou fonctionnelles.
                     <span class="intro-signature">Juliette</span>
                 </p>
+                <p class="subtitle">Lymphothérapeute diplômée de Vodder</p>
                 <p class="location">Cabinet situé à Divonne-les-Bains, à proximité de Genève.</p>
                 <a href="#contact" class="btn-cta">Prendre rendez-vous</a>
             </div>
@@ -933,7 +1000,10 @@
             <img src="data:image/png;base64,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" alt="Logo Juliette Paccani">
             <span>Juliette Paccani</span>
         </a>
-        <div class="nav-links">
+        <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="nav-links" id="nav-links">
             <a href="#about">À propos</a>
             <a href="#drainage">Drainage lymphatique</a>
             <a href="#ventouses">Ventouses</a>
@@ -985,7 +1055,7 @@
                 <div>
                     <h3 class="subhead" style="margin-top: 0;">Qu'est-ce que le drainage lymphatique manuel ?</h3>
                     <p>
-                        Le drainage lymphatique manuel est une technique thérapeutique douce qui stimule la
+                        Il s'agit d'une technique thérapeutique douce qui stimule la
                         circulation de la lymphe grâce à des mouvements spécifiques, lents et précis.
                     </p>
                     <p>
@@ -1228,7 +1298,7 @@
                     </div>
                 </div>
             </div>
-            <p>
+            <p style="font-style: italic;">
                 Chaque utilisation est adaptée à votre situation et intégrée à une prise en charge
                 personnalisée après évaluation de vos besoins.
             </p>
@@ -1301,7 +1371,7 @@
 
     <section id="pourquoi">
         <div class="container">
-            <h2>Pourquoi consulter ?</h2>
+            <h2>À l'écoute de vos besoins</h2>
             <div class="section-divider"></div>
             <div class="about-grid" style="align-items: start;">
                 <div>
@@ -1332,8 +1402,8 @@
     <section id="avis" class="alt-bg">
         <div class="container">
             <div class="consult-section">
-                <p class="consult-eyebrow">Avis clients</p>
-                <h3 class="consult-title">Ce que mes clientes disent</h3>
+                <p class="consult-eyebrow">Avis patients</p>
+                <h3 class="consult-title">Ce que mes patientes disent</h3>
                 <p class="consult-subtitle">Vos retours sont ma plus belle récompense et ma motivation au quotidien.</p>
                 <div class="consult-divider">
                     <span class="line"></span>
@@ -1345,67 +1415,67 @@
                 <div class="reviews-track">
                     <div class="review-card">
                         <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">Je souffrais de jambes lourdes depuis des années. Après quelques séances, j'ai retrouvé beaucoup plus de légèreté et de confort au quotidien.</p>
+                        <p class="review-text">J'ai consulté Juliette pour un œdème persistant. Dès la première séance, j'ai apprécié son professionnalisme, ses explications claires et son approche très sérieuse. Les séances m'ont apporté un réel soulagement.</p>
                         <div class="review-author">
-                            <span class="review-avatar">M</span>
+                            <span class="review-avatar">G</span>
                             <div>
-                                <strong>Marie L.</strong>
-                                <p>Cliente du cabinet</p>
+                                <strong>Guillaume R.</strong>
+                                <p>Patient du cabinet</p>
                             </div>
                         </div>
                     </div>
                     <div class="review-card">
                         <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">À la suite de mon opération, les séances m'ont beaucoup aidée à récupérer plus rapidement. Une approche à l'écoute et très professionnelle.</p>
+                        <p class="review-text">Je suis venue sur les conseils de mon angiologue pour du drainage lymphatique. Juliette est à l'écoute, douce et très compétente. Les soins sont réalisés avec beaucoup de rigueur et les résultats se sont fait sentir rapidement.</p>
                         <div class="review-author">
-                            <span class="review-avatar">S</span>
+                            <span class="review-avatar">L</span>
                             <div>
-                                <strong>Sophie D.</strong>
-                                <p>Cliente du cabinet</p>
+                                <strong>Laure P.</strong>
+                                <p>Patiente du cabinet</p>
                             </div>
                         </div>
                     </div>
                     <div class="review-card">
                         <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">Je consulte régulièrement pour du drainage lymphatique et c'est devenu un vrai moment pour moi. Je ressors à chaque fois détendue et apaisée.</p>
+                        <p class="review-text">À la suite d'une intervention chirurgicale, j'avais besoin d'un drainage lymphatique adapté. Juliette a su mettre en place une prise en charge parfaitement adaptée à ma situation. Je la recommande vivement.</p>
                         <div class="review-author">
-                            <span class="review-avatar">C</span>
+                            <span class="review-avatar">P</span>
                             <div>
-                                <strong>Caroline B.</strong>
-                                <p>Cliente du cabinet</p>
+                                <strong>Pierre B.</strong>
+                                <p>Patient du cabinet</p>
                             </div>
                         </div>
                     </div>
                     <div class="review-card">
                         <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">Je souffrais de jambes lourdes depuis des années. Après quelques séances, j'ai retrouvé beaucoup plus de légèreté et de confort au quotidien.</p>
+                        <p class="review-text">J'ai consulté Juliette pour un œdème persistant. Dès la première séance, j'ai apprécié son professionnalisme, ses explications claires et son approche très sérieuse. Les séances m'ont apporté un réel soulagement.</p>
                         <div class="review-author">
-                            <span class="review-avatar">M</span>
+                            <span class="review-avatar">G</span>
                             <div>
-                                <strong>Marie L.</strong>
-                                <p>Cliente du cabinet</p>
+                                <strong>Guillaume R.</strong>
+                                <p>Patient du cabinet</p>
                             </div>
                         </div>
                     </div>
                     <div class="review-card">
                         <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">À la suite de mon opération, les séances m'ont beaucoup aidée à récupérer plus rapidement. Une approche à l'écoute et très professionnelle.</p>
+                        <p class="review-text">Je suis venue sur les conseils de mon angiologue pour du drainage lymphatique. Juliette est à l'écoute, douce et très compétente. Les soins sont réalisés avec beaucoup de rigueur et les résultats se sont fait sentir rapidement.</p>
                         <div class="review-author">
-                            <span class="review-avatar">S</span>
+                            <span class="review-avatar">L</span>
                             <div>
-                                <strong>Sophie D.</strong>
-                                <p>Cliente du cabinet</p>
+                                <strong>Laure P.</strong>
+                                <p>Patiente du cabinet</p>
                             </div>
                         </div>
                     </div>
                     <div class="review-card">
                         <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">Je consulte régulièrement pour du drainage lymphatique et c'est devenu un vrai moment pour moi. Je ressors à chaque fois détendue et apaisée.</p>
+                        <p class="review-text">À la suite d'une intervention chirurgicale, j'avais besoin d'un drainage lymphatique adapté. Juliette a su mettre en place une prise en charge parfaitement adaptée à ma situation. Je la recommande vivement.</p>
                         <div class="review-author">
-                            <span class="review-avatar">C</span>
+                            <span class="review-avatar">P</span>
                             <div>
-                                <strong>Caroline B.</strong>
-                                <p>Cliente du cabinet</p>
+                                <strong>Pierre B.</strong>
+                                <p>Patient du cabinet</p>
                             </div>
                         </div>
                     </div>
@@ -1444,11 +1514,11 @@
             <h2>Contact</h2>
             <div class="section-divider"></div>
             <p>Cabinet de thérapies manuelles</p>
+            <div class="contact-address">
+                <strong>Adresse</strong>
+                <a href="https://www.google.com/maps/search/?api=1&query=18+Bis+Grande+Rue+01220+Divonne-les-Bains" target="_blank" rel="noopener">18 Bis Grande Rue, 01220 Divonne-les-Bains</a>
+            </div>
             <div class="contact-info">
-                <div>
-                    <strong>Adresse</strong>
-                    <a href="https://www.google.com/maps/search/?api=1&query=18+Bis+Grande+Rue+01220+Divonne-les-Bains" target="_blank" rel="noopener">18 Bis Grande Rue<br>01220 Divonne-les-Bains</a>
-                </div>
                 <div>
                     <strong>Téléphone</strong>
                     <a href="tel:+33630293256">+33 (0)6 30 29 32 56</a>
@@ -1473,5 +1543,21 @@
         <p>&copy; 2026 Juliette Paccani - Lymphothérapeute. Tous droits réservés.</p>
         <p>Drainage lymphatique manuel - Méthode Dr Vodder | Divonne-les-Bains</p>
     </footer>
+    <script>
+        var navToggle = document.querySelector('.nav-toggle');
+        var navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function () {
+            var isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
 </body>
 </html>
