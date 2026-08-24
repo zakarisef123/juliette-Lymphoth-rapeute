@@ -957,10 +957,14 @@
             }
 
             .mosaic-stack-2 {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: none;
-                height: 140px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                height: auto;
+            }
+
+            .mosaic-stack-2 > img {
+                height: 180px;
             }
 
             .mosaic-stack {
@@ -968,6 +972,10 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-template-rows: none;
                 height: 140px;
+            }
+
+            .mosaic-pourquoi > img {
+                height: 220px;
             }
 
             .photo-duo {
