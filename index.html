@@ -714,26 +714,18 @@
         }
 
         .reviews-carousel {
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
         }
 
         .reviews-track {
             display: flex;
             gap: 24px;
             width: max-content;
-            animation: scroll-reviews 32s linear infinite;
-        }
-
-        .reviews-carousel:hover .reviews-track,
-        .reviews-carousel.paused .reviews-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll-reviews {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
         }
 
         .review-card {
@@ -743,6 +735,7 @@
             width: 300px;
             flex-shrink: 0;
             box-shadow: 0 4px 14px rgba(58, 43, 30, 0.08);
+            scroll-snap-align: center;
         }
 
         .review-card .quote-mark {
@@ -862,8 +855,12 @@
 
             .hero-photo {
                 height: auto;
-                aspect-ratio: 933 / 1400;
+                aspect-ratio: 933 / 1150;
                 order: 1;
+            }
+
+            .hero-photo img {
+                object-position: center 78%;
             }
 
             header.hero h1 {
@@ -1006,8 +1003,8 @@
         <div class="hero-inner">
             <div class="hero-text">
                 <p class="intro">
-                    Je vous propose une approche thérapeutique douce destinée à soutenir le fonctionnement du système lymphatique,
-                    favoriser la résorption des œdèmes, améliorer la circulation de la lymphe et accompagner de
+                    Je vous propose une approche thérapeutique douce pour soutenir votre système lymphatique,
+                    résorber les œdèmes et améliorer la circulation de la lymphe, en accompagnement de
                     nombreuses situations médicales ou fonctionnelles.
                     <span class="intro-signature">Juliette</span>
                 </p>
@@ -1426,7 +1423,7 @@
         <div class="container">
             <div class="consult-section">
                 <p class="consult-eyebrow">Avis patients</p>
-                <h3 class="consult-title">Ce que mes patientes disent</h3>
+                <h3 class="consult-title">Ce que mes patients disent</h3>
                 <p class="consult-subtitle">Vos retours sont ma plus belle récompense et ma motivation au quotidien.</p>
                 <div class="consult-divider">
                     <span class="line"></span>
@@ -1436,39 +1433,6 @@
             </div>
             <div class="reviews-carousel">
                 <div class="reviews-track">
-                    <div class="review-card">
-                        <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">J'ai consulté Juliette pour un œdème persistant. Dès la première séance, j'ai apprécié son professionnalisme, ses explications claires et son approche très sérieuse. Les séances m'ont apporté un réel soulagement.</p>
-                        <div class="review-author">
-                            <span class="review-avatar">G</span>
-                            <div>
-                                <strong>Guillaume R.</strong>
-                                <p>Patient du cabinet</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review-card">
-                        <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">Je suis venue sur les conseils de mon angiologue pour du drainage lymphatique. Juliette est à l'écoute, douce et très compétente. Les soins sont réalisés avec beaucoup de rigueur et les résultats se sont fait sentir rapidement.</p>
-                        <div class="review-author">
-                            <span class="review-avatar">L</span>
-                            <div>
-                                <strong>Laure P.</strong>
-                                <p>Patiente du cabinet</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review-card">
-                        <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">À la suite d'une intervention chirurgicale, j'avais besoin d'un drainage lymphatique adapté. Juliette a su mettre en place une prise en charge parfaitement adaptée à ma situation. Je la recommande vivement.</p>
-                        <div class="review-author">
-                            <span class="review-avatar">P</span>
-                            <div>
-                                <strong>Pierre B.</strong>
-                                <p>Patient du cabinet</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="review-card">
                         <span class="quote-mark">&ldquo;</span>
                         <p class="review-text">J'ai consulté Juliette pour un œdème persistant. Dès la première séance, j'ai apprécié son professionnalisme, ses explications claires et son approche très sérieuse. Les séances m'ont apporté un réel soulagement.</p>
@@ -1517,8 +1481,7 @@
                     <h2 style="margin-top: 0;">Instagram</h2>
                     <div class="section-divider" style="margin-left: auto; margin-right: auto;"></div>
                     <h3 class="subhead" style="margin-top: 0;">Suivez mon quotidien</h3>
-                    <p>Retrouvez mes dernières publications, conseils et actualités du cabinet.</p>
-                    <p>Découvrez mon univers professionnel, les techniques de drainage lymphatique et des conseils bien-être sur <a href="https://www.instagram.com/jutherapeute" target="_blank" rel="noopener">@jutherapeute</a>.</p>
+                    <p>Découvrez mon univers professionnel sur <a href="https://www.instagram.com/jutherapeute" target="_blank" rel="noopener">@jutherapeute</a>.</p>
                     <div style="margin-top: 20px;">
                         <a href="https://www.instagram.com/jutherapeute" target="_blank" rel="noopener" class="btn-cta">Suivre sur Instagram</a>
                     </div>
@@ -1576,19 +1539,6 @@
                 navToggle.setAttribute('aria-expanded', 'false');
             });
         });
-
-        var reviewsCarousel = document.querySelector('.reviews-carousel');
-        if (reviewsCarousel) {
-            reviewsCarousel.addEventListener('touchstart', function () {
-                reviewsCarousel.classList.add('paused');
-            }, { passive: true });
-            reviewsCarousel.addEventListener('touchend', function () {
-                reviewsCarousel.classList.remove('paused');
-            });
-            reviewsCarousel.addEventListener('touchcancel', function () {
-                reviewsCarousel.classList.remove('paused');
-            });
-        }
     </script>
 </body>
 </html>
