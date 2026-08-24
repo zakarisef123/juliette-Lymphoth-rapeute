@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -350,6 +353,10 @@
 
         #ventouses .mosaic-tall img {
             object-position: center 84%;
+        }
+
+        #ventouses .mosaic-stack-2 img:first-child {
+            object-position: center 88%;
         }
 
         .about-name {
@@ -714,19 +721,67 @@
             margin-top: 40px;
         }
 
+        .reviews-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
         .reviews-carousel {
             overflow-x: auto;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+        }
+
+        .reviews-carousel::-webkit-scrollbar {
+            display: none;
         }
 
         .reviews-track {
             display: flex;
             gap: 24px;
             width: max-content;
+        }
+
+        .reviews-arrow {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            background: white;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .reviews-arrow svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .reviews-arrow:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-arrow {
+                display: none;
+            }
         }
 
         .review-card {
@@ -1053,7 +1108,7 @@
                     <p class="about-name">Juliette Paccani</p>
                     <p class="about-role">Lymphothérapeute</p>
                     <p>
-                        L'activité du cabinet est dédiée au drainage lymphatique manuel selon la méthode Dr Vodder et aux ventouses thérapeutiques. Formée au Centre de Thérapies Naturelles Di-Mà à Genève, je mets en œuvre une approche thérapeutique rigoureuse, fondée sur une évaluation personnalisée et adaptée aux besoins de chacun.
+                        L'activité du cabinet est dédiée au drainage lymphatique manuel selon la méthode Dr Vodder et aux ventouses thérapeutiques. Formée au Centre de Thérapies Naturelles DI-M à Genève, je mets en œuvre une approche thérapeutique rigoureuse, fondée sur une évaluation personnalisée et adaptée aux besoins de chacun.
                     </p>
                     <p>
                         Mon objectif est d'accompagner chaque patient avec écoute, précision et professionnalisme, que ce soit dans un contexte de prévention, de récupération, de troubles circulatoires, d'œdèmes, d'accompagnement post-opératoire ou autre.
@@ -1436,42 +1491,50 @@
                     <span class="line"></span>
                 </div>
             </div>
-            <div class="reviews-carousel">
-                <div class="reviews-track">
-                    <div class="review-card">
-                        <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">J'ai consulté Juliette pour un œdème persistant. Dès la première séance, j'ai apprécié son professionnalisme, ses explications claires et son approche très sérieuse. Les séances m'ont apporté un réel soulagement.</p>
-                        <div class="review-author">
-                            <span class="review-avatar">G</span>
-                            <div>
-                                <strong>Guillaume R.</strong>
-                                <p>Patient du cabinet</p>
+            <div class="reviews-wrap">
+                <button class="reviews-arrow reviews-arrow-prev" aria-label="Avis précédent" type="button">
+                    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
+                </button>
+                <div class="reviews-carousel">
+                    <div class="reviews-track">
+                        <div class="review-card">
+                            <span class="quote-mark">&ldquo;</span>
+                            <p class="review-text">J'ai consulté Juliette pour un œdème persistant. Dès la première séance, j'ai apprécié son professionnalisme, ses explications claires et son approche très sérieuse. Les séances m'ont apporté un réel soulagement.</p>
+                            <div class="review-author">
+                                <span class="review-avatar">G</span>
+                                <div>
+                                    <strong>Guillaume R.</strong>
+                                    <p>Patient du cabinet</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="review-card">
-                        <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">Je suis venue sur les conseils de mon angiologue pour du drainage lymphatique. Juliette est à l'écoute, douce et très compétente. Les soins sont réalisés avec beaucoup de rigueur et les résultats se sont fait sentir rapidement.</p>
-                        <div class="review-author">
-                            <span class="review-avatar">L</span>
-                            <div>
-                                <strong>Laure P.</strong>
-                                <p>Patiente du cabinet</p>
+                        <div class="review-card">
+                            <span class="quote-mark">&ldquo;</span>
+                            <p class="review-text">Je suis venue sur les conseils de mon angiologue pour du drainage lymphatique. Juliette est à l'écoute, douce et très compétente. Les soins sont réalisés avec beaucoup de rigueur et les résultats se sont fait sentir rapidement.</p>
+                            <div class="review-author">
+                                <span class="review-avatar">L</span>
+                                <div>
+                                    <strong>Laure P.</strong>
+                                    <p>Patiente du cabinet</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="review-card">
-                        <span class="quote-mark">&ldquo;</span>
-                        <p class="review-text">À la suite d'une intervention chirurgicale, j'avais besoin d'un drainage lymphatique adapté. Juliette a su mettre en place une prise en charge parfaitement adaptée à ma situation. Je la recommande vivement.</p>
-                        <div class="review-author">
-                            <span class="review-avatar">P</span>
-                            <div>
-                                <strong>Pierre B.</strong>
-                                <p>Patient du cabinet</p>
+                        <div class="review-card">
+                            <span class="quote-mark">&ldquo;</span>
+                            <p class="review-text">À la suite d'une intervention chirurgicale, j'avais besoin d'un drainage lymphatique adapté. Juliette a su mettre en place une prise en charge parfaitement adaptée à ma situation. Je la recommande vivement.</p>
+                            <div class="review-author">
+                                <span class="review-avatar">P</span>
+                                <div>
+                                    <strong>Pierre B.</strong>
+                                    <p>Patient du cabinet</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button class="reviews-arrow reviews-arrow-next" aria-label="Avis suivant" type="button">
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
+                </button>
             </div>
             <div class="contact-cta">
                 <a href="#contact" class="btn-cta">Prendre rendez-vous</a>
@@ -1544,6 +1607,19 @@
                 navToggle.setAttribute('aria-expanded', 'false');
             });
         });
+
+        var reviewsTrack = document.querySelector('.reviews-carousel');
+        var reviewsPrev = document.querySelector('.reviews-arrow-prev');
+        var reviewsNext = document.querySelector('.reviews-arrow-next');
+        if (reviewsTrack && reviewsPrev && reviewsNext) {
+            var scrollReviews = function (direction) {
+                var card = reviewsTrack.querySelector('.review-card');
+                var step = card ? card.getBoundingClientRect().width + 24 : 324;
+                reviewsTrack.scrollBy({ left: direction * step, behavior: 'smooth' });
+            };
+            reviewsPrev.addEventListener('click', function () { scrollReviews(-1); });
+            reviewsNext.addEventListener('click', function () { scrollReviews(1); });
+        }
     </script>
 </body>
 </html>
