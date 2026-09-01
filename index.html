@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -160,6 +156,10 @@
         .btn-cta:hover {
             background-color: #c48f68;
             transform: translateY(-2px);
+        }
+
+        .mobile-float-cta {
+            display: none;
         }
 
         nav {
@@ -357,9 +357,11 @@
             display: block;
         }
 
-        #drainage .mosaic-stack img:first-child {
-            height: auto;
-            align-self: center;
+        @media (min-width: 769px) {
+            #drainage .mosaic-stack img:first-child {
+                height: auto;
+                align-self: center;
+            }
         }
 
         .about-name {
@@ -878,6 +880,31 @@
         }
 
         @media (max-width: 768px) {
+            .mobile-float-cta {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                position: fixed;
+                right: 16px;
+                bottom: 16px;
+                z-index: 900;
+                background-color: var(--accent);
+                color: white;
+                padding: 13px 20px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.9em;
+                letter-spacing: 0.3px;
+                box-shadow: 0 6px 18px rgba(58, 43, 30, 0.32);
+            }
+
+            .mobile-float-cta svg {
+                width: 18px;
+                height: 18px;
+                flex-shrink: 0;
+            }
+
             .hero-inner {
                 grid-template-columns: 1fr;
                 height: auto;
@@ -1077,6 +1104,11 @@
             <a href="#contact">Contact</a>
         </div>
     </nav>
+
+    <a href="#contact" class="mobile-float-cta" aria-label="Prendre rendez-vous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="16" y1="2" x2="16" y2="6"></line></svg>
+        <span>Prendre rendez-vous</span>
+    </a>
 
     <section id="about">
         <div class="container">
