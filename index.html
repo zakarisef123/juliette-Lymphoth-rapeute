@@ -122,7 +122,7 @@
 
         header.hero .intro {
             max-width: 460px;
-            margin: 0 auto 18px;
+            margin: 0 auto 55px;
             font-family: 'Parisienne', cursive;
             font-size: 1.7em;
             font-weight: 400;
@@ -884,13 +884,13 @@
             }
 
             .hero-text {
-                padding: 60px 20px 40px;
+                padding: 36px 20px 28px;
                 order: 2;
             }
 
             .hero-photo {
                 height: auto;
-                aspect-ratio: 933 / 1150;
+                aspect-ratio: 933 / 980;
                 order: 1;
             }
 
@@ -903,8 +903,28 @@
             }
 
             header.hero .intro {
-                font-size: 1.4em;
+                font-size: 1.15em;
+                line-height: 1.5;
                 max-width: 320px;
+                margin-bottom: 14px;
+            }
+
+            header.hero .intro-signature {
+                margin-top: 4px;
+            }
+
+            header.hero .subtitle {
+                font-size: 1em;
+                margin-bottom: 4px;
+            }
+
+            header.hero .location {
+                font-size: 0.9em;
+                margin-bottom: 14px;
+            }
+
+            .btn-cta {
+                padding: 12px 30px;
             }
 
             body {
@@ -969,70 +989,44 @@
             }
 
             .about-mosaic {
-                grid-template-columns: 1fr;
-                gap: 12px;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
             }
 
             .about-mosaic img {
-                height: 220px;
+                height: 160px;
             }
 
             .drainage-mosaic {
-                display: flex;
-                flex-direction: column;
-                height: auto;
-                gap: 10px;
-            }
-
-            .mosaic-tall {
-                height: 200px;
-            }
-
-            #ventouses .mosaic-tall {
-                height: 320px;
-            }
-
-            .mosaic-stack-2 {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                height: auto;
-            }
-
-            .mosaic-stack-2 > img {
-                height: 180px;
-            }
-
-            .mosaic-stack {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: none;
-                height: 140px;
-            }
-
-            #pourquoi .mosaic-pourquoi {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
                 height: auto;
             }
 
-            #pourquoi .mosaic-pourquoi .mosaic-tall,
-            #pourquoi .mosaic-pourquoi .mosaic-stack-2 {
+            .drainage-mosaic .mosaic-tall,
+            .drainage-mosaic .mosaic-stack-2,
+            .drainage-mosaic .mosaic-stack {
                 display: contents;
             }
 
-            #pourquoi .mosaic-pourquoi img {
+            .drainage-mosaic img {
                 height: 160px;
                 width: 100%;
             }
 
+            .drainage-mosaic:not(.mosaic-pourquoi) .mosaic-tall img {
+                grid-column: span 2;
+                height: 220px;
+            }
+
             .photo-duo {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
             }
 
             .photo-duo img {
-                height: 220px;
+                height: 160px;
             }
 
             .consult-grid {
