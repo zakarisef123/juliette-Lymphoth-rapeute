@@ -1000,6 +1000,7 @@
             .drainage-mosaic {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
+                grid-auto-rows: auto;
                 gap: 10px;
                 height: auto;
             }
@@ -1013,11 +1014,6 @@
             .drainage-mosaic img {
                 height: 160px;
                 width: 100%;
-            }
-
-            .drainage-mosaic:not(.mosaic-pourquoi) .mosaic-tall img {
-                grid-column: span 2;
-                height: 220px;
             }
 
             .photo-duo {
