@@ -358,10 +358,6 @@
             object-position: center 50%;
         }
 
-        .mosaic-pourquoi .mosaic-stack img:nth-child(1) {
-            object-position: left 20%;
-        }
-
         .mosaic-tall {
             height: 100%;
             min-height: 0;
@@ -1099,7 +1095,9 @@
             }
 
             .mosaic-pourquoi .mosaic-stack img:nth-child(1) {
-                object-position: center 25% !important;
+                object-fit: contain !important;
+                object-position: center !important;
+                background-color: #f5ede3;
                 height: 160px !important;
             }
 
